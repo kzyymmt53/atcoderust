@@ -90,3 +90,55 @@ function! atcoderust#CreatDefCodeLoop(...) abort
     execute ":normal a" . "}\n"
         
 endfunction
+
+function! atcoderust#Permutation() abort
+
+    execute ":normal G"
+    execute ":normal O" . "\n"
+    execute ":normal a" . "\n"
+    execute ":normal O" . "pub trait LexicalPermutation { \n"
+    execute ":normal a" . "    fn next_permutation(&mut self) -> bool; \n"
+    execute ":normal a" . "    fn prev_permutation(&mut self) -> bool; \n"
+    execute ":normal a" . "}\n\n"
+    execute ":normal a" . "impl<T> LexicalPermutation for [T] where T: Ord {\n"
+    execute ":normal a" . "    fn next_permutation(&mut self) -> bool {\n"
+    execute ":normal a" . "        if self.len() < 2 { return false; }\n"
+    execute ":normal a" . "        let mut i = self.len() - 1;\n\n"
+    execute ":normal a" . "        while i > 0 && self[i-1] >= self[i] {\n"
+    execute ":normal a" . "            i -= 1;\n"
+    execute ":normal a" . "        }\n\n"
+    execute ":normal a" . "        if i == 0 {\n"
+    execute ":normal a" . "            return false;\n"
+    execute ":normal a" . "        }\n\n"
+    execute ":normal a" . "        let mut j = self.len() - 1;\n\n"
+    execute ":normal a" . "        while j >= i && self[j] <= self[i-1]  {\n"
+    execute ":normal a" . "            j -= 1;\n"
+    execute ":normal a" . "        }\n\n"
+    execute ":normal a" . "        self.swap(j, i-1); \n"
+    execute ":normal a" . "        self[i..].reverse();  \n\n"
+    execute ":normal a" . "        true \n\n"
+    execute ":normal a" . "    }\n\n"
+    execute ":normal a" . "    fn prev_permutation(&mut self) -> bool {\n"
+    execute ":normal a" . "        if self.len() < 2 { return false; }\n"
+    execute ":normal a" . "        let mut i = self.len() - 1;\n"
+    execute ":normal a" . "        while i > 0 && self[i-1] <= self[i] {\n"
+    execute ":normal a" . "            i -= 1;\n"
+    execute ":normal a" . "        }\n\n"
+    execute ":normal a" . "        if i == 0 { \n"
+    execute ":normal a" . "           return false;\n"
+    execute ":normal a" . "        }\n\n"
+    execute ":normal a" . "        self[i..].reverse();\n\n"
+    execute ":normal a" . "        let mut j = self.len() - 1;\n"
+    execute ":normal a" . "        while j >= i && self[j-1] < self[i-1]  {\n"
+    execute ":normal a" . "            j -= 1;\n"
+    execute ":normal a" . "        }\n\n"
+    execute ":normal a" . "        self.swap(i-1, j);\n\n"
+    execute ":normal a" . "        true\n\n"
+    execute ":normal a" . "    }\n\n"
+    execute ":normal a" . "}\n\n"
+ 
+endfunction
+    
+
+
+     
