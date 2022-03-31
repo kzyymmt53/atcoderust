@@ -79,6 +79,16 @@ Usage
   :RIL String
   ```
 
+* This Command that creates the next_permutation function and the prev_permutation function
+  ```
+  :RPerm
+  ```
+
+  The next_permutation function and prev_permutation function generate permutations of sequences.  
+  The functions can be used as follows.
+  ```
+  vector.next_permutation();
+  ```
 
 License
 --
