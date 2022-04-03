@@ -1,5 +1,5 @@
 
-let s:def_type = "i32"
+let s:def_type = "i64"
 let s:def_version = "0.3.6"
 
 function! s:helpDef()

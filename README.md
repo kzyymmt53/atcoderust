@@ -39,7 +39,7 @@ Usage
   fn main() {
  
       input! {
-          a: i32,
+          a: i64,
       }
  
   }   
@@ -67,7 +67,7 @@ Usage
  
       for _ in 0..n {
           input! {
-              a: i32,
+              a: i64,
           }
       }
  
