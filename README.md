@@ -1,6 +1,6 @@
 atcoderust
 ==
-Creating standard input code for AtCoder plguin.
+Creating Rust code for AtCoder plguin.
 
 
 Installation
@@ -88,6 +88,50 @@ Usage
   The functions can be used as follows.
   ```
   vector.next_permutation();
+  ```
+
+* This Command that writes itertools create definition to the dependencies of Cargo.toml
+  ```
+  :RITD
+  ```
+  The following string will be written
+  ```
+  itertools = "0.10.2"
+  ``` 
+ 
+  The version can be changed by using an argument
+  ```                                            
+  :RITD <version>
+  ```  
+
+* This Command that writes codes to import itertools. 
+  ```
+  :RITD2
+  ```
+  
+  The following codes will be written on the top of the file
+  ```
+  use itertools::Itertools;
+  ```
+
+* This Command that writes codes to import itertools. 
+  ```
+  :RHash
+  ```
+
+  The following codes will be written on the top of the file
+  ```
+  use std::collections::HashMap;
+  ```
+  
+* This Command that writes codes to declare a Hashmap variable. 
+  ```
+  :RHash2
+  ```
+  
+  The output is as follows
+  ```
+  let mut map = HashMap::new();
   ```
 
 License

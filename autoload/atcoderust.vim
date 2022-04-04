@@ -1,6 +1,7 @@
 
 let s:def_type = "i64"
 let s:def_version = "0.3.6"
+let s:def_version_iter = "0.10.2" 
 
 function! s:helpDef()
     echo "Usage:"
@@ -10,6 +11,16 @@ function! s:helpDef()
     echo "Example:"
     echo "\tRID 0.3.6"
     return 
+endfunction
+
+function! s:helpIterDef()
+    echo "Usage:"
+    echo "\tRITD <version>"
+    echo "Default:"
+    echo "\tversion: " . s:def_version_iter
+    echo "Example:"
+    echo "\tRIID 0.10.2"
+    return
 endfunction
 
 function! s:helpOne()
@@ -43,6 +54,40 @@ function! atcoderust#AtRustInputDefinition(...) abort
 
     let def = 'proconio = ' . '"' . l_version . '"'
     call append(line("$"), def )
+
+endfunction
+
+function! atcoderust#AtRustIreratorToolDefinition(...) abort
+
+    let l_version = exists("a:1") ? a:1 : s:def_version_iter
+
+    if l_version == "help"
+        call s:helpIterDef()
+        return
+    endif
+
+    let def = 'itertools = ' . '"' . l_version . '"'
+    call append(line("$"), def )
+
+endfunction
+
+function! atcoderust#AtRustIreratorToolDefinition2() abort
+
+    execute ":normal 1G"
+    execute ":normal O" . "use itertools::Itertools;" 
+
+endfunction
+
+function! atcoderust#AtRustHashDefinition() abort
+
+    execute ":normal 1G"
+    execute ":normal O" . "use std::collections::HashMap;"
+
+endfunction
+
+function! atcoderust#AtRustHashDefinition2() abort
+
+    execute ":normal O" . "let mut map = HashMap::new();" ."\n"
 
 endfunction
 
