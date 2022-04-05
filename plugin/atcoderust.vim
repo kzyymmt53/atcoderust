@@ -11,4 +11,5 @@ command! -nargs=? RIL call atcoderust#CreatDefCodeLoop(<f-args>)
 command! -nargs=0 RPerm call atcoderust#Permutation()
 command! -nargs=0 RHash call atcoderust#AtRustHashDefinition()
 command! -nargs=0 RHash2 call atcoderust#AtRustHashDefinition2()
+command! -nargs=0 RBSearch call atcoderust#AtRustBinarySearch()
 

@@ -71,6 +71,34 @@ function! atcoderust#AtRustIreratorToolDefinition(...) abort
 
 endfunction
 
+function! atcoderust#AtRustBinarySearch() abort
+
+    execute ":normal G"
+    execute ":normal O" . "\n"
+    execute ":normal a" . "fn binary_search(r: i64, l: i64, a: Vec<i64>, x: i64) -> bool {\n\n"
+    execute ":normal a" . "     if r - l < 0 {\n"
+    execute ":normal a" . "         return false;\n"
+    execute ":normal a" . "     }\n\n"
+    execute ":normal a" . "     let m = ((r + l) / 2) as usize;\n\n"
+    execute ":normal a" . "     if a[m] == x {\n"
+    execute ":normal a" . "         return true;\n"
+    execute ":normal a" . "     }\n\n"
+    execute ":normal a" . "     let mut l2: i64 = l;\n"
+    execute ":normal a" . "     let mut r2: i64 = r;\n\n"
+    execute ":normal a" . "     if a[m] > x { \n"
+    execute ":normal a" . "         r2 = m as i64 - 1;\n"
+    execute ":normal a" . "     }else {\n"
+    execute ":normal a" . "         l2 = m as i64 + 1;\n"
+    execute ":normal a" . "     }\n\n"
+    execute ":normal a" . "     if binary_search(r2, l2, a, x) {\n"
+    execute ":normal a" . "         return true;\n"
+    execute ":normal a" . "     }else{\n"
+    execute ":normal a" . "         return false;\n"
+    execute ":normal a" . "     }\n"
+    execute ":normal a" . "}\n"
+
+endfunction
+
 function! atcoderust#AtRustIreratorToolDefinition2() abort
 
     execute ":normal 1G"
