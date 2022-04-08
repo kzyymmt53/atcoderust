@@ -134,6 +134,11 @@ Usage
   let mut map = HashMap::new();
   ```
 
+* This Command that generates the binary search function codes. 
+  ```
+  :RBSearch
+  ```
+
 License
 --
 Released under the MIT license, see LICENSE.
