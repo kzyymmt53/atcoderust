@@ -12,4 +12,6 @@ command! -nargs=0 RPerm call atcoderust#Permutation()
 command! -nargs=0 RHash call atcoderust#AtRustHashDefinition()
 command! -nargs=0 RHash2 call atcoderust#AtRustHashDefinition2()
 command! -nargs=0 RBSearch call atcoderust#AtRustBinarySearch()
+command! -nargs=0 RQD call atcoderust#AtRustQueueDefinition()
+command! -nargs=0 RQD2 call atcoderust#AtRustQueueDefinition2()
 

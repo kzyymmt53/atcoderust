@@ -139,6 +139,27 @@ Usage
   :RBSearch
   ```
 
+* This Command that writes codes to import VecDeque.
+  ```
+  :RDQ
+  ```
+
+  Following codes will be written on the top of the file
+  ```
+  use std::collections::VecDeque;
+  ```
+
+* This Command that writes codes to declare a VecDeque variable.
+  ```
+  :RDQ
+  ```
+  
+  Following code will be written under the current line
+  ```
+  let mut deque: VecDeque<i64> = VecDeque::new();
+  ```
+
+
 License
 --
 Released under the MIT license, see LICENSE.

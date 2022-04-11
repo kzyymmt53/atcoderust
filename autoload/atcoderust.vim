@@ -113,6 +113,15 @@ function! atcoderust#AtRustHashDefinition() abort
 
 endfunction
 
+function! atcoderust#AtRustQueueDefinition() abort
+    execute ":normal 1G"
+    execute ":normal O" . "use std::collections::VecDeque;"
+endfunction
+
+function! atcoderust#AtRustQueueDefinition2() abort
+    execute ":normal O" . "let mut deque: VecDeque<i64> = VecDeque::new();"
+endfunction
+
 function! atcoderust#AtRustHashDefinition2() abort
 
     execute ":normal O" . "let mut map = HashMap::new();" ."\n"
