@@ -43,6 +43,7 @@ function! s:helpLoop()
     return            
 endfunction  
 
+
 function! atcoderust#AtRustInputDefinition(...) abort 
 
     let l_version = exists("a:1") ? a:1 : s:def_version
@@ -68,6 +69,47 @@ function! atcoderust#AtRustIreratorToolDefinition(...) abort
 
     let def = 'itertools = ' . '"' . l_version . '"'
     call append(line("$"), def )
+
+endfunction
+
+function! atcoderust#AtRustPowerMatrix() abort
+    execute ":normal G"
+    execute ":normal O" . "\n"
+    execute ":normal a" . "fn power_matrix(n: i64, v: &mut Vec<Vec<i64>>) -> Vec<Vec<i64>> {\n\n"
+    execute ":normal a" . "    let mut ans: Vec<Vec<i64>> = vec![vec![0; 2]; 2];\n"
+    execute ":normal a" . "    let mut flag = false;\n"
+    execute ":normal a" . "    let mut temp;\n"
+    execute ":normal a" . "    for i in 0..60 { \n"
+    execute ":normal a" . "        if n & (1 << i) != 0 {\n"
+    execute ":normal a" . "            if !flag {\n"
+    execute ":normal a" . "                ans = v.to_vec();\n"
+    execute ":normal a" . "                flag = true;\n"
+    execute ":normal a" . "            }else{\n"
+    execute ":normal a" . "                ans = mulmatrix(&mut ans, v);\n"
+    execute ":normal a" . "            }\n"
+    execute ":normal a" . "        }\n"
+    execute ":normal a" . "        temp = v.clone();\n"
+    execute ":normal a" . "        *v = mulmatrix(&mut temp, v);\n"
+    execute ":normal a" . "    }\n\n"
+    execute ":normal a" . "    return ans;\n"
+    execute ":normal a" . "}\n\n"
+
+endfunction
+
+function! atcoderust#AtRustMulMatrix() abort
+    execute ":normal G"
+    execute ":normal O" . "\n"
+    execute ":normal a" . "fn mulmatrix(a: &mut Vec<Vec<i64>>, b: &mut Vec<Vec<i64>>) -> Vec<Vec<i64>> {\n\n"
+    execute ":normal a" . "    let mut c: Vec<Vec<i64>> = vec![vec![0; 2]; 2];\n\n"
+    execute ":normal a" . "    for i in 0..2 {\n"
+    execute ":normal a" . "        for k in 0..2 {\n"
+    execute ":normal a" . "            for j in 0..2 {\n"
+    execute ":normal a" . "                c[i][j] += a[i][k] * b[k][j]; \n"
+    execute ":normal a" . "            }\n"
+    execute ":normal a" . "        }\n"
+    execute ":normal a" . "    }\n\n"
+    execute ":normal a" . "    return c;\n"
+    execute ":normal a" . "}\n"
 
 endfunction
 

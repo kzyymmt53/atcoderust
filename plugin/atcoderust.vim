@@ -14,4 +14,6 @@ command! -nargs=0 RHash2 call atcoderust#AtRustHashDefinition2()
 command! -nargs=0 RBSearch call atcoderust#AtRustBinarySearch()
 command! -nargs=0 RQD call atcoderust#AtRustQueueDefinition()
 command! -nargs=0 RQD2 call atcoderust#AtRustQueueDefinition2()
+command! -nargs=0 RMM call atcoderust#AtRustMulMatrix()
+command! -nargs=0 RPM call atcoderust#AtRustPowerMatrix()
 
