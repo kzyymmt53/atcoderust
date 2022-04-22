@@ -2,6 +2,7 @@
 let s:def_type = "i64"
 let s:def_version = "0.3.6"
 let s:def_version_iter = "0.10.2" 
+let s:def_dim_matrix = "2" 
 
 function! s:helpDef()
     echo "Usage:"
@@ -72,11 +73,41 @@ function! atcoderust#AtRustIreratorToolDefinition(...) abort
 
 endfunction
 
-function! atcoderust#AtRustPowerMatrix() abort
+function! atcoderust#AtRustLcm() abort
+    execute ":normal G"               
+    execute ":normal O" . "\n"  
+    execute ":normal a" . "fn lcm(a: i64, b: i64) -> i64 {\n"
+    execute ":normal a" . "    return a / gcd(a, b) * b;\n"
+    execute ":normal a" . "}\n\n"
+    execute ":normal a" . "fn gcd(a: i64, b: i64) -> i64 {\n"
+    execute ":normal a" . "    if b == 0 {\n"
+    execute ":normal a" . "        return a;\n"
+    execute ":normal a" . "    }\n"
+    execute ":normal a" . "    return gcd(b, a % b);\n"
+    execute ":normal a" . "}\n"
+
+endfunction
+
+function! atcoderust#AtRustGcd() abort
+    execute ":normal G"
+    execute ":normal O" . "\n"
+    execute ":normal a" . "fn gcd(a: i64, b: i64) -> i64 {\n"
+    execute ":normal a" . "    if b == 0 {\n"
+    execute ":normal a" . "        return a;\n"
+    execute ":normal a" . "    }\n"
+    execute ":normal a" . "    return gcd(b, a % b);\n"
+    execute ":normal a" . "}\n"
+
+endfunction
+
+function! atcoderust#AtRustPowerMatrix(...) abort
+
+    let dim = exists("a:1") ? a:1 : s:def_dim_matrix 
+
     execute ":normal G"
     execute ":normal O" . "\n"
     execute ":normal a" . "fn power_matrix(n: i64, v: &mut Vec<Vec<i64>>) -> Vec<Vec<i64>> {\n\n"
-    execute ":normal a" . "    let mut ans: Vec<Vec<i64>> = vec![vec![0; 2]; 2];\n"
+    execute ":normal a" . "    let mut ans: Vec<Vec<i64>> = vec![vec![0; " . dim . "]; " . dim . "];\n"
     execute ":normal a" . "    let mut flag = false;\n"
     execute ":normal a" . "    let mut temp;\n"
     execute ":normal a" . "    for i in 0..60 { \n"
@@ -96,14 +127,17 @@ function! atcoderust#AtRustPowerMatrix() abort
 
 endfunction
 
-function! atcoderust#AtRustMulMatrix() abort
+function! atcoderust#AtRustMulMatrix(...) abort
+
+    let dim = exists("a:1") ? a:1 : s:def_dim_matrix 
+    
     execute ":normal G"
     execute ":normal O" . "\n"
     execute ":normal a" . "fn mulmatrix(a: &mut Vec<Vec<i64>>, b: &mut Vec<Vec<i64>>) -> Vec<Vec<i64>> {\n\n"
-    execute ":normal a" . "    let mut c: Vec<Vec<i64>> = vec![vec![0; 2]; 2];\n\n"
-    execute ":normal a" . "    for i in 0..2 {\n"
-    execute ":normal a" . "        for k in 0..2 {\n"
-    execute ":normal a" . "            for j in 0..2 {\n"
+    execute ":normal a" . "    let mut c: Vec<Vec<i64>> = vec![vec![0; " . dim . "]; " . dim . "];\n\n"
+    execute ":normal a" . "    for i in 0.." . dim . " {\n"
+    execute ":normal a" . "        for k in 0.." . dim . " {\n"
+    execute ":normal a" . "            for j in 0.." . dim . " {\n"
     execute ":normal a" . "                c[i][j] += a[i][k] * b[k][j]; \n"
     execute ":normal a" . "            }\n"
     execute ":normal a" . "        }\n"
