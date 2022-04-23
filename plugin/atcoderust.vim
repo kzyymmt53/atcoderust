@@ -18,4 +18,5 @@ command! -nargs=? RMM call atcoderust#AtRustMulMatrix(<f-args>)
 command! -nargs=? RPM call atcoderust#AtRustPowerMatrix(<f-args>)
 command! -nargs=0 RLCM call atcoderust#AtRustLcm()
 command! -nargs=0 RGCD call atcoderust#AtRustGcd()
+command! -nargs=0 RCM call atcoderust#AtCombMod()
 

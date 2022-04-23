@@ -73,6 +73,27 @@ function! atcoderust#AtRustIreratorToolDefinition(...) abort
 
 endfunction
 
+function! atcoderust#AtCombMod() abort
+    execute ":normal G"                                                                                                                        
+    execute ":normal O" . "\n"  
+    execute ":normal a" . "fn combi(bunshi: i64, bunbo: i64, m: i64) -> i64 {\n"
+    execute ":normal a" . "    return bunshi * modpow(bunbo % m, m - 2, m) % m;\n"
+    execute ":normal a" . "}\n\n"
+    execute ":normal a" . "fn modpow(mut bunbo: i64, p: i64, m: i64) -> i64 {\n"
+    execute ":normal a" . "    let mut ans = 1;\n\n"
+    execute ":normal a" . "    for i in 0..60 {\n"
+    execute ":normal a" . "        if p & (1 << i) != 0 {\n"
+    execute ":normal a" . "            ans *= bunbo;\n"
+    execute ":normal a" . "            ans %= m;\n"
+    execute ":normal a" . "        }\n"
+    execute ":normal a" . "        bunbo *= bunbo;\n"
+    execute ":normal a" . "        bunbo %= m;\n"
+    execute ":normal a" . "    }\n\n"
+    execute ":normal a" . "    return ans;\n\n"
+    execute ":normal a" . "}\n\n"
+
+endfunction
+
 function! atcoderust#AtRustLcm() abort
     execute ":normal G"               
     execute ":normal O" . "\n"  
