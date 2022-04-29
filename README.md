@@ -159,6 +159,10 @@ Usage
   let mut deque: VecDeque<i64> = VecDeque::new();
   ```
 
+* This Command that writes codes to maltiply matrix.
+  ```
+  RMM
+  ```
 
 License
 --
