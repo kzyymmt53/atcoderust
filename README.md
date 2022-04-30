@@ -161,9 +161,13 @@ Usage
 
 * This Command that writes codes to maltiply matrix.
   ```
-  RMM
+  :RMM
   ```
 
+* This Command that writes lcm function.
+  ```
+  :RLCM
+  ```
 License
 --
 Released under the MIT license, see LICENSE.
