@@ -151,7 +151,7 @@ Usage
 
 * This Command that writes codes to declare a VecDeque variable.
   ```
-  :RDQ
+  :RDQ2
   ```
   
   Following code will be written under the current line
